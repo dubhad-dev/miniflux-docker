@@ -6,6 +6,7 @@ services:
     restart: always
     environment:
       - DB_HOST=miniflux-db:5432
+      - BASE_URL
       - DATABASE_URL
       - RUN_MIGRATIONS=1
       - CREATE_ADMIN=1
