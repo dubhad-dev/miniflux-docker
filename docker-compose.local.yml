@@ -5,8 +5,8 @@ services:
     build: miniflux
     restart: "no"
     environment:
-      - DB_HOST=db:5432
-      - DATABASE_URL=postgres://postgres:postgres@db/miniflux?sslmode=disable
+      - DB_HOST=miniflux-db:5432
+      - DATABASE_URL=postgres://miniflux:password@miniflux-db/miniflux?sslmode=disable
       - RUN_MIGRATIONS=1
       - CREATE_ADMIN=1
       - ADMIN_USERNAME=admin
@@ -14,17 +14,17 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      - db
+      - miniflux-db
 
-  db:
+  miniflux-db:
     image: postgres:13.1
     restart: "no"
     environment:
       - POSTGRES_DB=miniflux
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=miniflux
+      - POSTGRES_PASSWORD=password
     volumes:
-      - db:/var/lib/postgresql/data
+      - miniflux_db:/var/lib/postgresql/data
 
 volumes:
-  db:
+  miniflux_db:
