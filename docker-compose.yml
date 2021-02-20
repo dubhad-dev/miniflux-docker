@@ -16,11 +16,14 @@ services:
       - VIRTUAL_PORT=8080
       - LETSENCRYPT_HOST
       - LETSENCRYPT_EMAIL
+    networks:
+      - default
+      - proxy
     depends_on:
       - miniflux-db
 
   miniflux-db:
-    image: postgres:13.1
+    image: postgres:13.2
     restart: always
     environment:
       - POSTGRES_DB
@@ -28,11 +31,13 @@ services:
       - POSTGRES_PASSWORD
     volumes:
       - miniflux_db:/var/lib/postgresql/data
+    networks:
+      - default
 
 volumes:
   miniflux_db:
 
 networks:
-  default:
+  proxy:
     external:
       name: nginx-proxy

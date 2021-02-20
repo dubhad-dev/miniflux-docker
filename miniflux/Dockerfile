@@ -1,4 +1,4 @@
-FROM miniflux/miniflux:2.0.25
+FROM miniflux/miniflux:2.0.28
 
 ENV DB_HOST=
 
