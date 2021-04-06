@@ -1,6 +1,4 @@
-FROM miniflux/miniflux:2.0.28
-
-ENV DB_HOST=
+FROM miniflux/miniflux:2.0.29
 
 COPY wait-for ./wait-for
 
