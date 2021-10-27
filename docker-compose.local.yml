@@ -17,7 +17,7 @@ services:
       - miniflux-db
 
   miniflux-db:
-    image: postgres:13.3
+    image: postgres:13.4
     restart: "no"
     environment:
       - POSTGRES_DB=miniflux
