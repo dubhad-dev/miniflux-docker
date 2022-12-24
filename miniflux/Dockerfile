@@ -1,4 +1,4 @@
-FROM miniflux/miniflux:2.0.39
+FROM miniflux/miniflux:2.0.41
 
 COPY wait-for ./wait-for
 
