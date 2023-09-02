@@ -1,6 +1,6 @@
 services:
   miniflux:
-    image: miniflux/miniflux:2.0.45
+    image: miniflux/miniflux:2.0.47
     restart: always
     environment:
       - BASE_URL
@@ -28,7 +28,7 @@ services:
         condition: service_healthy
 
   miniflux-db:
-    image: postgres:13.11
+    image: postgres:13.12
     restart: always
     environment:
       - POSTGRES_DB
