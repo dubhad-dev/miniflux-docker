@@ -1,6 +1,6 @@
 services:
   miniflux:
-    image: miniflux/miniflux:2.0.47
+    image: miniflux/miniflux:2.0.51
     restart: always
     environment:
       - BASE_URL
@@ -20,6 +20,8 @@ services:
       - VIRTUAL_PORT=8080
       - LETSENCRYPT_HOST
       - LETSENCRYPT_EMAIL
+    healthcheck:
+      test: ["CMD", "/usr/bin/miniflux", "-healthcheck", "auto"]
     networks:
       - default
       - proxy
@@ -28,7 +30,7 @@ services:
         condition: service_healthy
 
   miniflux-db:
-    image: postgres:13.12
+    image: postgres:13.13
     restart: always
     environment:
       - POSTGRES_DB
