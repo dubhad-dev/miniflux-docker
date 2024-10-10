@@ -1,6 +1,6 @@
 services:
   miniflux:
-    image: miniflux/miniflux:2.0.51
+    image: miniflux/miniflux:2.2.1
     restart: always
     environment:
       - BASE_URL
@@ -28,11 +28,9 @@ services:
     depends_on:
       miniflux-db:
         condition: service_healthy
-    labels:
-      - docker-volume-backup.stop-during-backup=miniflux
 
   miniflux-db:
-    image: postgres:13.13
+    image: postgres:13.16
     restart: always
     environment:
       - POSTGRES_DB
@@ -46,8 +44,6 @@ services:
       start_period: 30s
     networks:
       - default
-    labels:
-      - docker-volume-backup.stop-during-backup=miniflux
 
 volumes:
   miniflux_db:
